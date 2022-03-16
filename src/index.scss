@@ -1,0 +1,62 @@
+@import "./sass/variables";
+@import "./sass/resets";
+
+body {
+  height: 100vh;
+  width: 100vw;
+
+  overflow: hidden;
+  background-color: $default-red;
+}
+#first-screen {
+  position: relative;
+
+  figure {
+    position: absolute;
+    margin: 0 auto;
+    top: 150px;
+    left: 0;
+    right: 0;
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    height: 170px;
+    width: 300px;
+
+    img {
+      width: 95px;
+    }
+    figcaption {
+      font-family: $font-righteous;
+      font-size: 40px;
+      color: white;
+    }
+  }
+  button {
+    position: absolute;
+    top: 450px;
+    right: 0;
+    left: 0;
+
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 55px;
+    width: 220px;
+
+    font-family: $font-recursive;
+    font-size: $regular-font-size;
+    color: rgba(215, 9, 0, 1);
+
+    border: $btn-border-style;
+    box-shadow: $default-box-shadow;
+    border-radius: $default-border-radius;
+    background-color: white;
+  }
+}
