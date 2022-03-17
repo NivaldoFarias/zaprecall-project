@@ -1,5 +1,6 @@
 @import "./sass/variables";
 @import "./sass/resets";
+@import "./sass/mixins";
 
 body {
   height: 100vh;
@@ -8,7 +9,7 @@ body {
   overflow: hidden;
   background-color: $default-red;
 }
-#first-screen {
+#nav-screen {
   position: relative;
 
   figure {
@@ -28,7 +29,7 @@ body {
     width: 300px;
 
     img {
-      width: 95px;
+      width: 85px;
     }
     figcaption {
       font-family: $font-righteous;
@@ -59,4 +60,78 @@ body {
     border-radius: $default-border-radius;
     background-color: white;
   }
+}
+#first-screen {
+  position: relative;
+  height: inherit;
+  width: inherit;
+
+  header {
+    @include flex-center(row, space-between, 0);
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    padding: 19px 80px;
+    height: 120px;
+    width: 100%;
+
+    img {
+      width: 50px;
+    }
+    h3 {
+      font-size: 32px;
+      font-family: $font-righteous;
+      color: white;
+    }
+  }
+  main {
+    @include flex-center(column, initial, 10px);
+
+    margin-top: 150px;
+    padding: 0 11px;
+    height: fit-content;
+    width: 100%;
+
+    article {
+      @include flex-center(row, space-between, 0);
+
+      padding: 0 20px;
+      height: 70px;
+      width: 330px;
+
+      font-family: $font-recursive;
+      font-weight: bold;
+      font-size: 21px;
+
+      border-radius: $default-border-radius;
+      box-shadow: $default-box-shadow;
+      background-color: white;
+    }
+    ion-icon {
+      font-size: 34px;
+      --ionicon-stroke-width: 45px;
+    }
+  }
+  footer {
+    @include flex-center(row, center, 0);
+
+    position: fixed;
+    bottom: 0;
+    left: 0;
+
+    height: 80px;
+    width: 100%;
+
+    font-family: $font-recursive;
+    font-size: 18px;
+
+    box-shadow: $footer-box-shadow;
+    background-color: white;
+  }
+}
+button:hover,
+ion-icon:hover {
+  cursor: pointer;
 }

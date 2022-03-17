@@ -1,10 +1,10 @@
 import React from "react";
-import FirstScreen from "./components/FirstScreen";
+import Wrapper from "./components/index";
 
 export default function App() {
   return (
     <React.Fragment>
-      <FirstScreen />
+      <Wrapper />
     </React.Fragment>
   );
 }
