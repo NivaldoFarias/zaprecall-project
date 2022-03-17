@@ -70,6 +70,7 @@ body {
     @include flex-center(row, space-between, 0);
 
     position: fixed;
+    z-index: 1;
     top: 0;
     left: 0;
 
@@ -88,6 +89,7 @@ body {
   }
   main {
     @include flex-center(column, initial, 10px);
+    position: relative;
 
     margin-top: 150px;
     padding: 0 11px;
@@ -95,8 +97,6 @@ body {
     width: 100%;
 
     article {
-      @include flex-center(row, space-between, 0);
-
       padding: 0 20px;
       height: 70px;
       width: 330px;
@@ -118,6 +118,7 @@ body {
     @include flex-center(row, center, 0);
 
     position: fixed;
+    z-index: 1;
     bottom: 0;
     left: 0;
 
@@ -134,4 +135,40 @@ body {
 button:hover,
 ion-icon:hover {
   cursor: pointer;
+}
+.display {
+  @include flex-center(row, space-between, 0);
+
+  height: 100%;
+  width: 100%;
+}
+.card {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+
+  transition: transform 1s;
+  transform-style: preserve-3d;
+
+  &.clicked {
+    transform: rotateY(180deg);
+    transition: transform 0.5s;
+  }
+  .front,
+  .back {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: white;
+    text-align: center;
+    font-size: 60px;
+    border-radius: 5px;
+    backface-visibility: hidden;
+  }
+  .back {
+    color: white;
+    transform: rotateY(180deg);
+    background: #03446a;
+  }
 }
