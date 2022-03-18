@@ -1,5 +1,5 @@
 import React from "react";
-import Cards from "./Cards";
+import Cards from "./card/index";
 import { Footer } from "./Footer";
 
 export default function FirstScreen() {
