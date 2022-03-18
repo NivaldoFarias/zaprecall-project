@@ -2,7 +2,7 @@ import React from "react";
 import CardContent from "./CardContent";
 
 export function Card(props) {
-  const { number, question, answer } = props;
+  const { number, question, answer, callback } = props;
   const [showCard, setShowCard] = React.useState(false);
   const [cardTurned, setCardTurned] = React.useState("");
   const [answerData, setAnswerData] = React.useState("");
@@ -19,6 +19,10 @@ export function Card(props) {
     setCardTurned("");
     setAnswerData(valueStr);
   }
+
+  React.useEffect(() => {
+    callback(answerData);
+  });
 
   return (
     <article className={showCard ? `card ${cardTurned}` : "display"}>

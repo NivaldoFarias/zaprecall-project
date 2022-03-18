@@ -1,11 +1,13 @@
 import React from "react";
-import { Icons } from "./icons/index";
+import { Icons } from "./Icons";
 
-export function Footer() {
+export function Footer(props) {
+  const { icons } = props;
+
   return (
     <footer>
       <p>0/4 CONCLUÍDOS</p>
-      <Icons></Icons>
+      {icons ? <Icons icons={icons} /> : null}
     </footer>
   );
 }
