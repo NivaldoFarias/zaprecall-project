@@ -1,5 +1,6 @@
 import React from "react";
 import Cards from "./Cards";
+import { Footer } from "./Footer";
 
 export default function FirstScreen() {
   return (
@@ -9,9 +10,7 @@ export default function FirstScreen() {
         <h3>ZapRecall</h3>
       </header>
       <Cards></Cards>
-      <footer>
-        <p>0/4 CONCLUÍDOS</p>
-      </footer>
+      <Footer></Footer>
     </React.Fragment>
   );
 }

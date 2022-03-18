@@ -1,13 +1,18 @@
 import React from "react";
 
 export default function CardContent(props) {
-  const { question, answer, turnCard } = props;
+  const { question, answer, turnCard, returnCardDefault } = props;
   const [cardTurn, setCardTurn] = React.useState(false);
+  const [returnDefault, setReturnDefault] = React.useState(false);
 
   function select(bool) {
     setCardTurn(bool);
 
     bool ? turnCard(bool) : turnCard(!bool);
+  }
+  function cardDefault(bool, valueStr) {
+    setReturnDefault(bool);
+    returnCardDefault(valueStr);
   }
 
   return (
@@ -24,9 +29,24 @@ export default function CardContent(props) {
       </div>
       <div className="answer">
         <p>{answer}</p>
-        <div className="wrong">Não lembrei</div>
-        <div className="in-between">Quase não lembrei</div>
-        <div className="success">Zap!</div>
+        <div
+          className="wrong"
+          onClick={() => cardDefault(!returnDefault, "wrong")}
+        >
+          Não lembrei
+        </div>
+        <div
+          className="in-between"
+          onClick={() => cardDefault(!returnDefault, "in-between")}
+        >
+          Quase não lembrei
+        </div>
+        <div
+          className="success"
+          onClick={() => cardDefault(!returnDefault, "success")}
+        >
+          Zap!
+        </div>
       </div>
     </React.Fragment>
   );

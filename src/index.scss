@@ -116,19 +116,13 @@ body::-webkit-scrollbar {
 
     border-radius: $default-border-radius;
     box-shadow: $default-box-shadow;
-    background-color: white;
-  }
-  main article.paper-bg {
-    height: 140px;
-    transition: height 500ms cubic-bezier(0.215, 0.61, 0.355, 1);
-    background-color: $card-color !important;
   }
   main ion-icon {
     font-size: 34px;
     --ionicon-stroke-width: 45px;
   }
   footer {
-    @include flex-center(row, center, 0);
+    @include flex-center(column, center, 5px);
 
     position: fixed;
     z-index: 1;
@@ -144,6 +138,22 @@ body::-webkit-scrollbar {
     box-shadow: $footer-box-shadow;
     background-color: white;
   }
+  section {
+    @include flex-center(row, center, 0);
+
+    font-size: 28px;
+
+    ion-icon.wrong-icon.md.hydrated {
+      color: $wrong-red;
+    }
+    ion-icon.in-between-icon.md.hydrated {
+      font-size: 30.3px !important;
+      color: $in-between-orange;
+    }
+    ion-icon.success-icon.md.hydrated {
+      color: $success-green;
+    }
+  }
 }
 button:hover,
 ion-icon:hover,
@@ -153,17 +163,20 @@ ion-icon:hover,
 .display {
   @include flex-center(row, space-between, 0);
 
-  height: 100%;
-  width: 100%;
+  background-color: white;
 }
 .card {
   position: absolute;
+  top: 0;
+  right: 0;
 
-  width: inherit;
-  height: inherit;
+  height: 140px !important;
+
+  background-color: $card-color !important;
 
   transition: transform 1s;
   transform-style: preserve-3d;
+  transition: height 500ms cubic-bezier(0.215, 0.61, 0.355, 1);
 
   &.turned {
     transform: rotateY(180deg);
@@ -173,7 +186,7 @@ ion-icon:hover,
   .answer {
     position: absolute;
     top: 0;
-    right: 20px;
+    right: 0;
 
     height: inherit;
     width: inherit;
@@ -186,6 +199,10 @@ ion-icon:hover,
   .question p,
   .answer p {
     position: absolute;
+    top: 0;
+    left: 0;
+
+    line-height: 23px;
 
     padding: 20px 15px 0 15px;
     height: fit-content;
@@ -204,17 +221,25 @@ ion-icon:hover,
 
     padding: 0 5px 5px;
 
+    font-size: 18px !important;
+
     transform: rotateY(180deg);
   }
   .wrong,
   .in-between,
   .success {
     @include flex-center(row, center, 0);
+
+    height: 40px;
+    width: 100px;
+
+    font-size: 13px;
     text-align: center;
+    color: white;
 
-    width: 1fr;
-
+    cursor: pointer;
     border-radius: $default-border-radius;
+    box-shadow: $default-box-shadow;
   }
   .wrong {
     background-color: $wrong-red;
