@@ -6,8 +6,15 @@ body {
   height: 100vh;
   width: 100vw;
 
-  overflow: hidden;
+  -ms-overflow-style: none; /* for IE, Edge */
+  scrollbar-width: none; /* for Firefox */
+  overflow-y: scroll;
+
+  overflow-x: hidden;
   background-color: $default-red;
+}
+body::-webkit-scrollbar {
+  display: none;
 }
 #nav-screen {
   position: relative;
@@ -27,15 +34,14 @@ body {
 
     height: 170px;
     width: 300px;
-
-    img {
-      width: 85px;
-    }
-    figcaption {
-      font-family: $font-righteous;
-      font-size: 40px;
-      color: white;
-    }
+  }
+  figure img {
+    width: 85px;
+  }
+  figure figcaption {
+    font-family: $font-righteous;
+    font-size: 40px;
+    color: white;
   }
   button {
     position: absolute;
@@ -67,52 +73,59 @@ body {
   width: inherit;
 
   header {
-    @include flex-center(row, space-between, 0);
+    @include flex-center(row, initial, 20px);
 
-    position: fixed;
+    position: absolute;
     z-index: 1;
-    top: 0;
     left: 0;
+    right: 0;
 
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
     padding: 19px 80px;
     height: 120px;
-    width: 100%;
-
-    img {
-      width: 50px;
-    }
-    h3 {
-      font-size: 32px;
-      font-family: $font-righteous;
-      color: white;
-    }
+    width: 375px;
+  }
+  header img {
+    width: 50px;
+  }
+  header h3 {
+    font-size: 32px;
+    font-family: $font-righteous;
+    color: white;
   }
   main {
     @include flex-center(column, initial, 10px);
     position: relative;
 
-    margin-top: 150px;
-    padding: 0 11px;
+    margin: 0 auto;
+    padding: 150px 11px 100px 11px;
     height: fit-content;
-    width: 100%;
+    width: 375px;
+  }
+  main article {
+    position: relative;
+    padding: 0 20px;
+    height: 70px;
+    width: 330px;
 
-    article {
-      padding: 0 20px;
-      height: 70px;
-      width: 330px;
+    font-family: $font-recursive;
+    font-weight: bold;
+    font-size: 21px;
 
-      font-family: $font-recursive;
-      font-weight: bold;
-      font-size: 21px;
-
-      border-radius: $default-border-radius;
-      box-shadow: $default-box-shadow;
-      background-color: white;
-    }
-    ion-icon {
-      font-size: 34px;
-      --ionicon-stroke-width: 45px;
-    }
+    border-radius: $default-border-radius;
+    box-shadow: $default-box-shadow;
+    background-color: white;
+  }
+  main article.paper-bg {
+    height: 140px;
+    transition: height 500ms cubic-bezier(0.215, 0.61, 0.355, 1);
+    background-color: $card-color !important;
+  }
+  main ion-icon {
+    font-size: 34px;
+    --ionicon-stroke-width: 45px;
   }
   footer {
     @include flex-center(row, center, 0);
@@ -133,7 +146,8 @@ body {
   }
 }
 button:hover,
-ion-icon:hover {
+ion-icon:hover,
+.question img:hover {
   cursor: pointer;
 }
 .display {
@@ -144,31 +158,71 @@ ion-icon:hover {
 }
 .card {
   position: absolute;
-  width: 100%;
-  height: 100%;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+
+  width: inherit;
+  height: inherit;
 
   transition: transform 1s;
   transform-style: preserve-3d;
 
-  &.clicked {
+  &.turned {
     transform: rotateY(180deg);
     transition: transform 0.5s;
   }
-  .front,
-  .back {
+  .question,
+  .answer {
     position: absolute;
-    height: 100%;
-    width: 100%;
-    background: white;
-    text-align: center;
-    font-size: 60px;
-    border-radius: 5px;
+    top: 0;
+    right: 20px;
+
+    height: inherit;
+    width: inherit;
+
+    font-weight: 400;
+
+    border-radius: $default-border-radius;
     backface-visibility: hidden;
   }
-  .back {
-    color: white;
+  .question p,
+  .answer p {
+    position: absolute;
+
+    padding: 20px 15px 0 15px;
+    height: fit-content;
+    width: 100%;
+  }
+  .question img {
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+
+    width: 40px;
+  }
+  .answer {
+    @include flex-center(row, space-evenly, 5px);
+    align-items: flex-end;
+
+    padding: 0 5px 5px;
+
     transform: rotateY(180deg);
-    background: #03446a;
+  }
+  .wrong,
+  .in-between,
+  .success {
+    @include flex-center(row, center, 0);
+    text-align: center;
+
+    width: 1fr;
+
+    border-radius: $default-border-radius;
+  }
+  .wrong {
+    background-color: $wrong-red;
+  }
+  .in-between {
+    background-color: $in-between-orange;
+  }
+  .success {
+    background-color: $success-green;
   }
 }

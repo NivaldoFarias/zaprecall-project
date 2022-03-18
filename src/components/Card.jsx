@@ -1,23 +1,30 @@
+import React from "react";
+import CardContent from "./CardContent";
+
 export function Card(props) {
-  const { key, number, question, answer } = props;
+  const { number, question, answer } = props;
+  const [showCard, setShowCard] = React.useState(false);
+  const [cardTurned, setCardTurned] = React.useState(false);
+
+  function turnCard(bool) {
+    setCardTurned(bool);
+  }
 
   return (
-    <article key={key}>
-      <div className="display">
-        <p>Pergunta {number}</p>
-        <ion-icon name="play-outline"></ion-icon>
-      </div>
-      <div className="card hidden">
-        <div className="card-question">
-          <p>{question}</p>
-          <span className="material-icons-outlined">360</span>
-        </div>
-        <div className="card-answer">
-          <p>{answer}</p>
-          <div className="wrong">Não lembrei</div>
-          <div className="in-between">Quase não lembrei</div>
-          <div className="success">Zap!</div>
-        </div>
+    <article className={showCard ? "paper-bg" : ""}>
+      <div className={showCard ? "card" : "display"}>
+        {showCard ? (
+          <CardContent question={question} answer={answer} />
+        ) : (
+          <React.Fragment>
+            <p>Pergunta {number}</p>
+            <ion-icon
+              name="play-outline"
+              onClick={() => setShowCard(!showCard)}
+              turnCard={turnCard}
+            ></ion-icon>
+          </React.Fragment>
+        )}
       </div>
     </article>
   );
