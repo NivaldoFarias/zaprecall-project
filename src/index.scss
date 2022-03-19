@@ -117,9 +117,29 @@ body::-webkit-scrollbar {
     border-radius: $default-border-radius;
     box-shadow: $default-box-shadow;
   }
-  main ion-icon {
-    font-size: 34px;
-    --ionicon-stroke-width: 45px;
+  article {
+    p.wrong-text {
+      color: $wrong-red;
+      text-decoration: line-through;
+      text-decoration-color: $wrong-red;
+    }
+    p.in-between-text {
+      color: $in-between-orange;
+      text-decoration: line-through;
+      text-decoration-color: $in-between-orange;
+    }
+    p.success-text {
+      color: $success-green;
+      text-decoration: line-through;
+      text-decoration-color: $success-green;
+    }
+    & > ion-icon.wrong-icon,
+    & > ion-icon.success-icon {
+      font-size: 35px;
+    }
+    & > ion-icon.in-between-icon {
+      font-size: 38px;
+    }
   }
   footer {
     @include flex-center(column, center, 5px);
@@ -138,21 +158,34 @@ body::-webkit-scrollbar {
     box-shadow: $footer-box-shadow;
     background-color: white;
   }
+  footer.show-results {
+    justify-content: space-between;
+
+    padding: 15px 60px;
+    height: 244px;
+    transition: height 500ms cubic-bezier(0.39, 0.575, 0.565, 1);
+  }
   section {
     @include flex-center(row, center, 0);
 
     font-size: 28px;
-
-    ion-icon.wrong-icon.md.hydrated {
-      color: $wrong-red;
-    }
-    ion-icon.in-between-icon.md.hydrated {
-      font-size: 30.3px !important;
-      color: $in-between-orange;
-    }
-    ion-icon.success-icon.md.hydrated {
-      color: $success-green;
-    }
+  }
+  section ion-icon {
+    cursor: default;
+  }
+  ion-icon.play-btn {
+    font-size: 34px;
+    --ionicon-stroke-width: 45px;
+  }
+  ion-icon.wrong-icon {
+    color: $wrong-red;
+  }
+  ion-icon.in-between-icon {
+    font-size: 30.3px;
+    color: $in-between-orange;
+  }
+  ion-icon.success-icon {
+    color: $success-green;
   }
 }
 button:hover,
@@ -249,5 +282,37 @@ ion-icon:hover,
   }
   .success {
     background-color: $success-green;
+  }
+}
+.results {
+  @include flex-center(column, center, 15px);
+  align-items: center;
+
+  text-align: center;
+
+  #{&}__title {
+    @include flex-center(row, initial, 12px);
+  }
+  #{&}__title img {
+    width: 23px;
+  }
+  #{&}__title figcaption {
+    font-weight: bold;
+    font-size: 18px;
+  }
+}
+#restart-btn {
+  height: 32px;
+  width: 167px;
+
+  color: white;
+
+  border: none;
+  border-radius: $default-border-radius;
+  background-color: $default-red;
+
+  &.clicked {
+    filter: brightness(150%);
+    transition: 400ms;
   }
 }

@@ -3,18 +3,21 @@ import { Card } from "./Card";
 import { cardsData } from "./cardsData";
 
 export default function Cards(props) {
-  const { newIcon } = props;
+  const { newIcon, restartRecall } = props;
   const [newEntry, setNewEntry] = React.useState("");
 
   function callback(icon) {
-    setNewEntry(icon);
+    if (!restartRecall) {
+      setNewEntry(icon);
+    }
   }
 
   React.useEffect(() => {
     if (newEntry.length > 0) {
-      console.log(newEntry);
+      newIcon(newEntry);
     }
-  });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [newEntry]);
 
   return (
     <main>
@@ -24,6 +27,7 @@ export default function Cards(props) {
           number={card.number}
           question={card.question}
           answer={card.answer}
+          restartRecall={restartRecall}
           callback={callback}
         />
       ))}
