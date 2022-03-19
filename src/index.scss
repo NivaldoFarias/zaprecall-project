@@ -3,6 +3,7 @@
 @import "./sass/mixins";
 
 body {
+  position: relative;
   height: 100vh;
   width: 100vw;
 
@@ -188,6 +189,21 @@ body::-webkit-scrollbar {
     color: $success-green;
   }
 }
+#restart-btn {
+  height: 32px;
+  width: 167px;
+
+  color: white;
+
+  border: none;
+  border-radius: $default-border-radius;
+  background-color: $default-red;
+
+  &.clicked {
+    filter: brightness(75%);
+    transition: 400ms;
+  }
+}
 button:hover,
 ion-icon:hover,
 .question img:hover {
@@ -301,18 +317,92 @@ ion-icon:hover,
     font-size: 18px;
   }
 }
-#restart-btn {
-  height: 32px;
-  width: 167px;
+#loading-img {
+  position: absolute;
+  top: calc(100vh / 2 - 120px);
+  right: 0;
+  left: 0;
+  margin: 0 auto;
 
-  color: white;
+  width: 150px;
+  animation: img-pulse 1.2s infinite ease-in-out;
+}
 
-  border: none;
-  border-radius: $default-border-radius;
-  background-color: $default-red;
+/* generated at https://loading.io/ (modified) */
+/* #loading-spinner {
+  position: relative;
 
-  &.clicked {
-    filter: brightness(150%);
-    transition: 400ms;
+  width: 100%;
+  height: 100%;
+
+  transform-origin: 0 0;
+  transform: translateZ(0) scale(1);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+
+  
+  div {
+    position: absolute;
+
+    opacity: 1;
+
+    border-radius: 50%;
+    border-width: 4px;
+    border-style: solid;
+
+    animation: loading-spinner 1.25s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+  }
+  #maroon-ripple {
+    border-color: #3c0f0f;
+    animation-delay: 0s;
+  }
+  #red-ripple {
+    border-color: #f91a10;
+    animation-delay: -0.625s;
+  }
+}
+#loading-spinner-ripple {
+  position: absolute;
+  top: calc(100vh / 2 - 125px);
+  left: 0;
+  right: 0;
+
+  display: inline-block;
+  margin: 0 auto;
+  width: 200px;
+  height: 200px;
+
+  text-align: center;
+  overflow: hidden;
+  background: none;
+}
+@keyframes loading-spinner {
+  0% {
+    top: 96px;
+    left: 96px;
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+  100% {
+    top: 18px;
+    left: 18px;
+    width: 156px;
+    height: 156px;
+    opacity: 0;
+  }
+} */
+@keyframes img-pulse {
+  0% {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+  50% {
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8);
+  }
+  100% {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
   }
 }

@@ -13,7 +13,7 @@ export function Card(props) {
 
   iconsArray.push(
     <ion-icon
-      class="play-btn"
+      class="play-btn md hydrated"
       name="play-outline"
       onClick={() => setShowCard(!showCard)}
     ></ion-icon>
@@ -51,11 +51,10 @@ export function Card(props) {
 
   React.useEffect(() => {
     callback(answerData);
-    console.log(number, answerData);
   }, [callback, answerData, restartRecall]);
 
   React.useEffect(() => {
-    if (restartRecall) returnCardDefault();
+    if (restartRecall) returnCardDefault("");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [restartRecall]);
 

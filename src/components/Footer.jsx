@@ -5,7 +5,13 @@ import PartyEmoji from "./../assets/party.png";
 import SadEmoji from "./../assets/sad.png";
 
 export function Footer(props) {
-  const { icons, perfectScore, callback } = props;
+  const {
+    icons,
+    perfectScore,
+    callback,
+    loadScreenAnimation,
+    generatedTimeOut,
+  } = props;
   const [restartRecall, setRestartRecall] = React.useState(false);
   const [btnClick, setBtnCLick] = React.useState("");
   const numOfCards = cardsData.length,
@@ -21,10 +27,24 @@ export function Footer(props) {
   React.useEffect(() => {
     if (restartRecall) {
       callback();
-      setRestartRecall(false);
+      setBtnCLick("clicked");
+
+      const timeout = setTimeout(() => {
+        setBtnCLick("");
+        setRestartRecall(false);
+      }, generatedTimeOut);
+
+      return () => clearTimeout(timeout);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [restartRecall]);
+
+  React.useEffect(() => {
+    if (btnClick === "clicked") {
+      loadScreenAnimation();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [btnClick]);
 
   return (
     <footer className={isComplete ? "show-results" : ""}>
@@ -45,7 +65,7 @@ export function Footer(props) {
         <button
           id="restart-btn"
           className={btnClick}
-          //onClick={() => setTimeout(setRestartRecall(!restartRecall), 400)}
+          onClick={() => setRestartRecall(!restartRecall)}
         >
           REINICIAR RECALL
         </button>

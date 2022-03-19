@@ -6,17 +6,17 @@ export const cardsData = [
   },
   {
     number: "2",
-    question: "O React é __",
+    question: "O que é o React?",
     answer: "Uma biblioteca JavaScript para construção de interfaces!",
   },
   {
     number: "3",
-    question: "Componentes devem iniciar com __",
-    answer: "Letra maiúscula!",
+    question: "Como devemos nomear componentes no React?",
+    answer: "Usando PascalCase!",
   },
   {
     number: "4",
-    question: "Podemos colocar __ dentro do JSX",
+    question: "Dentro do JSX, o que podemos utilizar?",
     answer: "Expressões!",
   },
   {
@@ -26,18 +26,18 @@ export const cardsData = [
   },
   {
     number: "6",
-    question: "Para que usamos o npm?",
+    question: "Para quê usamos o npm?",
     answer: "Gerenciar os pacotes necessários e suas dependências!",
   },
   {
     number: "7",
-    question: "Para que usamos props?",
-    answer: "Passar diferentes informações para componentes!",
+    question: "Para quê usamos props?",
+    answer: "Para passar diferentes informações para componentes!",
   },
   {
     number: "8",
-    question: "Para que usamos states?",
+    question: "Para quê usamos states?",
     answer:
-      "Dizer para o React quais informações quando atualizadas devem renderizar a tela novamente!",
+      "Informar quais informações, ao atualizadas, devem renderizar a tela novamente!",
   },
 ];
