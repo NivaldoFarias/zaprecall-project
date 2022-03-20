@@ -6,7 +6,8 @@ function Bubble(props) {
   return <div className="bubble">{props.value}</div>;
 }
 
-export default function Slider() {
+export default function Slider(props) {
+  const { userGoal } = props;
   const [value, onChange] = React.useState(1);
   const element = document.querySelector(".bubble");
 
@@ -15,6 +16,11 @@ export default function Slider() {
       element.style.left = `${Number(value / 4)}px`;
     }
   });
+  React.useEffect(() => {
+    userGoal(value);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [value]);
 
   return (
     <>
@@ -28,7 +34,10 @@ export default function Slider() {
             onChange(radius);
           }}
         />
-        <Bubble value={value}></Bubble>
+        <div className="goal">
+          <p>Meta de Zaps</p>
+          <Bubble value={value}></Bubble>
+        </div>
         <div className="marks-container">
           <div className="tick-mark"></div>
           <div className="tick-mark"></div>

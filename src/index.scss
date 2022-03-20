@@ -18,23 +18,23 @@ body::-webkit-scrollbar {
   display: none;
 }
 #nav-screen {
+  @include flex-center(column, initial, 30px);
+  align-items: center;
   position: relative;
 
+  height: 100vh;
+  width: 100vw;
+
+  padding: 150px 30px;
+
   figure {
-    position: absolute;
-    margin: 0 auto;
-    top: 150px;
-    left: 0;
-    right: 0;
-    text-align: center;
+    @include flex-center(column, space-between, 0);
 
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-
+    margin-bottom: 150px;
     height: 170px;
     width: 300px;
+
+    text-align: center;
   }
   figure img {
     width: 85px;
@@ -45,11 +45,6 @@ body::-webkit-scrollbar {
     color: white;
   }
   button {
-    position: absolute;
-    top: 450px;
-    right: 0;
-    left: 0;
-
     margin: 0 auto;
     display: flex;
     justify-content: center;
@@ -61,11 +56,24 @@ body::-webkit-scrollbar {
     font-family: $font-recursive;
     font-size: $regular-font-size;
     color: rgba(215, 9, 0, 1);
+    opacity: 0.6;
+
+    transition: opacity 400ms;
 
     border: $btn-border-style;
     box-shadow: $default-box-shadow;
     border-radius: $default-border-radius;
     background-color: white;
+  }
+  p {
+    margin: 0 auto;
+    text-shadow: 1px 1px 5px #000000e5;
+
+    font-size: 21px;
+    font-weight: 400;
+    font-family: $font-recursive;
+    text-align: center;
+    color: white;
   }
 }
 #first-screen {
@@ -323,21 +331,23 @@ body::-webkit-scrollbar {
   }
 }
 .slider {
-  position: absolute;
-  top: 61vh;
-  right: 23.3vw;
+  @include flex-center(column, initial, 20px);
+  align-items: center;
 
+  position: relative;
   margin: 0 auto;
 
+  .goal {
+    @include flex-center(row, initial, 10px);
+
+    position: relative;
+  }
   .bubble {
-    position: absolute;
-    top: 30px;
-
     color: white;
-    font-size: 21px;
+    font-size: 24px;
+    font-weight: 500;
     font-family: $font-recursive;
-
-    transform: translate(750%);
+    text-shadow: 1px 1px 5px #000000e5;
   }
   .marks-container {
     @include flex-center(row, space-evenly, 15px);
@@ -345,15 +355,16 @@ body::-webkit-scrollbar {
 
     position: absolute;
     z-index: -1;
-    top: 2px;
+    top: -3px;
 
     padding: 0 5px;
     height: inherit;
-    width: 100%;
+    width: 200px;
 
     .tick-mark {
       border-left: 2px solid rgb(233, 233, 233);
       border-radius: $default-border-radius;
+      box-shadow: 1px 1px 5px black;
 
       height: 15px;
     }
@@ -364,6 +375,8 @@ body::-webkit-scrollbar {
 
     appearance: none;
     background-color: white;
+
+    box-shadow: 1px 1px 3px #000000e5;
     border-radius: $default-border-radius;
 
     opacity: 1;

@@ -5,6 +5,7 @@ import PartyEmoji from "./../assets/party.png";
 import SadEmoji from "./../assets/sad.png";
 
 export function Footer(props) {
+  // VARIABLES
   const {
     icons,
     perfectScore,
@@ -16,20 +17,25 @@ export function Footer(props) {
   const [btnClick, setBtnCLick] = React.useState("");
   const numOfCards = cardsData.length,
     numOfIcons = icons.length;
+  let goalAchieved = perfectScore;
 
+  // CONDITIONALS
   const isComplete = numOfIcons === numOfCards;
-  const resultsTitle = perfectScore ? "Parabéns!" : "Putz...";
-  const resultsText = perfectScore
+  const resultsTitle = goalAchieved ? "Parabéns!" : "Putz...";
+  const resultsText = goalAchieved
     ? "Você não esqueceu de nenhum flashcard!"
     : `Ainda faltam alguns... Mas não desanime!`;
-  const emoji = perfectScore ? PartyEmoji : SadEmoji;
+  const emoji = goalAchieved ? PartyEmoji : SadEmoji;
+  console.log(goalAchieved);
 
+  // EFFECT HOOKS
   React.useEffect(() => {
     if (restartRecall) {
       callback();
       setBtnCLick("clicked");
 
       const timeout = setTimeout(() => {
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         setBtnCLick("");
         setRestartRecall(false);
       }, generatedTimeOut);

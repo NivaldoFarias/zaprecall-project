@@ -7,7 +7,12 @@ import { getRandomInt } from "./../utils/index";
 export default function Wrapper() {
   const [initRecall, setInitRecall] = React.useState(false);
   const [loadScreen, setLoadScreen] = React.useState(false);
+  const [scoreGoal, setScoreGoal] = React.useState(1);
   const generatedTimeOut = getRandomInt(1000, 4500);
+
+  function userGoal(value) {
+    setScoreGoal(value);
+  }
 
   React.useEffect(() => {
     if (loadScreen) {
@@ -23,7 +28,7 @@ export default function Wrapper() {
   return (
     <React.Fragment>
       {initRecall ? (
-        <FirstScreen />
+        <FirstScreen scoreGoal={scoreGoal} />
       ) : (
         <div id="nav-screen" className={initRecall ? "hidden" : ""}>
           <figure id="logo">
@@ -33,7 +38,7 @@ export default function Wrapper() {
           <button id="begin-btn" onClick={() => setInitRecall(!initRecall)}>
             Iniciar Recall!
           </button>
-          <Slider />
+          <Slider userGoal={userGoal} hasStarted={initRecall} />
         </div>
       )}
     </React.Fragment>

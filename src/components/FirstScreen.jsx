@@ -7,19 +7,20 @@ import { iconsData } from "./iconsData";
 import { cardsData } from "./cards/cardsData";
 import { getRandomInt } from "./../utils/index";
 
-export default function FirstScreen() {
+export default function FirstScreen(props) {
+  const { scoreGoal } = props;
   const [wrong, inBetween, success] = iconsData;
   const [displayIcons, setDisplayIcons] = React.useState([]);
-  const [perfectScore, setPerfectScore] = React.useState(true);
   const [reloadComponent, setReloadComponent] = React.useState(false);
   const [loadScreen, setLoadScreen] = React.useState(false);
+  const [countScore, setCountScore] = React.useState(0);
 
   const generatedTimeOut = getRandomInt(1000, 4500);
 
   React.useEffect(() => {
     if (reloadComponent) {
       setDisplayIcons([]);
-      setPerfectScore(true);
+      setCountScore(0);
       setReloadComponent(false);
     }
   }, [reloadComponent]);
@@ -44,7 +45,6 @@ export default function FirstScreen() {
 
     if (displayIcons.length <= cardsData.length) {
       if (iconStr === "wrong") {
-        setPerfectScore(false);
         clonedIcon = { ...wrong };
         setDisplayIcons([...displayIcons, clonedIcon]);
       } else if (iconStr === "in-between") {
@@ -52,6 +52,7 @@ export default function FirstScreen() {
         setDisplayIcons([...displayIcons, clonedIcon]);
       } else if (iconStr === "success") {
         clonedIcon = { ...success };
+        setCountScore(countScore + 1);
         setDisplayIcons([...displayIcons, clonedIcon]);
       }
     }
@@ -80,7 +81,7 @@ export default function FirstScreen() {
           <Cards newIcon={newIcon} restartRecall={reloadComponent}></Cards>
           <Footer
             icons={displayIcons}
-            perfectScore={perfectScore}
+            perfectScore={countScore >= scoreGoal}
             callback={restartPage}
             loadScreenAnimation={loadScreenAnimation}
             generatedTimeOut={generatedTimeOut}
