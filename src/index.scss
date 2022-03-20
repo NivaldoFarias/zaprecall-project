@@ -204,10 +204,15 @@ body::-webkit-scrollbar {
     transition: 400ms;
   }
 }
-button:hover,
-ion-icon:hover,
-.question img:hover {
-  cursor: pointer;
+#loading-img {
+  position: absolute;
+  top: calc(100vh / 2 - 120px);
+  right: 0;
+  left: 0;
+  margin: 0 auto;
+
+  width: 150px;
+  animation: img-pulse 1.2s infinite ease-in-out;
 }
 .display {
   @include flex-center(row, space-between, 0);
@@ -317,81 +322,85 @@ ion-icon:hover,
     font-size: 18px;
   }
 }
-#loading-img {
+.slider {
   position: absolute;
-  top: calc(100vh / 2 - 120px);
-  right: 0;
-  left: 0;
+  top: 61vh;
+  right: 23.3vw;
+
   margin: 0 auto;
 
-  width: 150px;
-  animation: img-pulse 1.2s infinite ease-in-out;
-}
-
-/* generated at https://loading.io/ (modified) */
-/* #loading-spinner {
-  position: relative;
-
-  width: 100%;
-  height: 100%;
-
-  transform-origin: 0 0;
-  transform: translateZ(0) scale(1);
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-
-  
-  div {
+  .bubble {
     position: absolute;
+    top: 30px;
+
+    color: white;
+    font-size: 21px;
+    font-family: $font-recursive;
+
+    transform: translate(750%);
+  }
+  .marks-container {
+    @include flex-center(row, space-evenly, 15px);
+    align-items: center;
+
+    position: absolute;
+    z-index: -1;
+    top: 2px;
+
+    padding: 0 5px;
+    height: inherit;
+    width: 100%;
+
+    .tick-mark {
+      border-left: 2px solid rgb(233, 233, 233);
+      border-radius: $default-border-radius;
+
+      height: 15px;
+    }
+  }
+  input {
+    width: 200px;
+    height: 8px;
+
+    appearance: none;
+    background-color: white;
+    border-radius: $default-border-radius;
 
     opacity: 1;
 
-    border-radius: 50%;
-    border-width: 4px;
-    border-style: solid;
+    &::-webkit-slider-thumb {
+      appearance: none;
 
-    animation: loading-spinner 1.25s cubic-bezier(0, 0.2, 0.8, 1) infinite;
-  }
-  #maroon-ripple {
-    border-color: #3c0f0f;
-    animation-delay: 0s;
-  }
-  #red-ripple {
-    border-color: #f91a10;
-    animation-delay: -0.625s;
+      height: 30px;
+      width: 26px;
+      background: url("./assets/logo-pequeno.png") no-repeat;
+      background-size: cover;
+
+      border: none;
+      cursor: pointer;
+    }
+    &::-moz-range-thumb {
+      appearance: none;
+
+      height: 30px;
+      width: 30px;
+
+      border-radius: 50%;
+
+      border: none;
+      cursor: pointer;
+
+      background: url("./assets/logo-pequeno.png") no-repeat;
+      background-size: cover;
+    }
+    &:focus::-ms-fill-lower {
+      background: #888;
+    }
+    &:focus::-ms-fill-upper {
+      background: #ccc;
+    }
   }
 }
-#loading-spinner-ripple {
-  position: absolute;
-  top: calc(100vh / 2 - 125px);
-  left: 0;
-  right: 0;
-
-  display: inline-block;
-  margin: 0 auto;
-  width: 200px;
-  height: 200px;
-
-  text-align: center;
-  overflow: hidden;
-  background: none;
-}
-@keyframes loading-spinner {
-  0% {
-    top: 96px;
-    left: 96px;
-    width: 0;
-    height: 0;
-    opacity: 1;
-  }
-  100% {
-    top: 18px;
-    left: 18px;
-    width: 156px;
-    height: 156px;
-    opacity: 0;
-  }
-} */
 @keyframes img-pulse {
   0% {
     -webkit-transform: scale(1.1);
@@ -405,4 +414,9 @@ ion-icon:hover,
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
   }
+}
+button:hover,
+ion-icon:hover,
+.question img:hover {
+  cursor: pointer;
 }

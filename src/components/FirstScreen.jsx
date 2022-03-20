@@ -1,9 +1,11 @@
 import React from "react";
 import Cards from "./cards/Cards";
-import ZapRecall from "./../assets/logo.png";
+import Logo from "./../assets/logo.png";
+import SmallLogo from "./../assets/logo-pequeno.png";
 import { Footer } from "./Footer";
 import { iconsData } from "./iconsData";
 import { cardsData } from "./cards/cardsData";
+import { getRandomInt } from "./../utils/index";
 
 export default function FirstScreen() {
   const [wrong, inBetween, success] = iconsData;
@@ -12,7 +14,7 @@ export default function FirstScreen() {
   const [reloadComponent, setReloadComponent] = React.useState(false);
   const [loadScreen, setLoadScreen] = React.useState(false);
 
-  const generatedTimeOut = randomTimeOut(1000, 4500);
+  const generatedTimeOut = getRandomInt(1000, 4500);
 
   React.useEffect(() => {
     if (reloadComponent) {
@@ -55,12 +57,6 @@ export default function FirstScreen() {
     }
   }
 
-  function randomTimeOut(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1) + min);
-  }
-
   function loadScreenAnimation() {
     setLoadScreen(true);
   }
@@ -70,15 +66,15 @@ export default function FirstScreen() {
   }
 
   return (
-    <>
+    <div id="first-screen">
       {loadScreen ? (
         <>
-          <img id="loading-img" src={ZapRecall} alt="" />
+          <img id="loading-img" src={Logo} alt="" />
         </>
       ) : (
         <>
           <header>
-            <img src="./assets/logo-pequeno.png" alt="logo zap recall" />
+            <img src={SmallLogo} alt="logo zap recall" />
             <h3>ZapRecall</h3>
           </header>
           <Cards newIcon={newIcon} restartRecall={reloadComponent}></Cards>
@@ -91,6 +87,6 @@ export default function FirstScreen() {
           ></Footer>
         </>
       )}
-    </>
+    </div>
   );
 }

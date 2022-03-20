@@ -1,10 +1,13 @@
 import React from "react";
 import FirstScreen from "./FirstScreen";
+import Slider from "./Slider";
+import Logo from "./../assets/logo.png";
+import { getRandomInt } from "./../utils/index";
 
 export default function Wrapper() {
   const [initRecall, setInitRecall] = React.useState(false);
   const [loadScreen, setLoadScreen] = React.useState(false);
-  const generatedTimeOut = randomTimeOut(1000, 4500);
+  const generatedTimeOut = getRandomInt(1000, 4500);
 
   React.useEffect(() => {
     if (loadScreen) {
@@ -17,24 +20,22 @@ export default function Wrapper() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loadScreen]);
 
-  function randomTimeOut(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1) + min);
-  }
-
   return (
     <React.Fragment>
-      <div id="nav-screen" className={initRecall ? "hidden" : ""}>
-        <figure id="logo">
-          <img src="./assets/logo.png" alt="logo zap recall" />
-          <figcaption>ZapRecall</figcaption>
-        </figure>
-        <button id="begin-btn" onClick={() => setInitRecall(!initRecall)}>
-          Iniciar Recall!
-        </button>
-      </div>
-      <div id="first-screen">{initRecall ? <FirstScreen /> : null}</div>
+      {initRecall ? (
+        <FirstScreen />
+      ) : (
+        <div id="nav-screen" className={initRecall ? "hidden" : ""}>
+          <figure id="logo">
+            <img src={Logo} alt="logo zap recall" />
+            <figcaption>ZapRecall</figcaption>
+          </figure>
+          <button id="begin-btn" onClick={() => setInitRecall(!initRecall)}>
+            Iniciar Recall!
+          </button>
+          <Slider />
+        </div>
+      )}
     </React.Fragment>
   );
 }

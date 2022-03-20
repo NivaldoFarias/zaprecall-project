@@ -1,7 +1,8 @@
 import React from "react";
+import RotateIcon from "./../../assets/360_black_24dp.svg";
 
 export default function CardContent(props) {
-  const { question, answer, turnCard, returnCardDefault } = props;
+  const { question, answer, turnCard, returnToCardDefault } = props;
   const [cardTurn, setCardTurn] = React.useState(false);
   const [returnDefault, setReturnDefault] = React.useState(false);
 
@@ -12,7 +13,7 @@ export default function CardContent(props) {
   }
   function cardDefault(bool, valueStr) {
     setReturnDefault(bool);
-    returnCardDefault(valueStr);
+    returnToCardDefault(valueStr);
   }
 
   return (
@@ -20,7 +21,7 @@ export default function CardContent(props) {
       <div className="question">
         <p>{question}</p>
         <img
-          src="./assets/360_black_24dp.svg"
+          src={RotateIcon}
           alt="rotate card icon"
           onClick={() => {
             select(!cardTurn);

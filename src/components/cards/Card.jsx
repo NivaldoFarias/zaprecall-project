@@ -42,7 +42,7 @@ export function Card(props) {
       setCardTurned("");
     }
   }
-  function returnCardDefault(valueStr) {
+  function returnToCardDefault(valueStr) {
     setShowCard(false);
     setCardTurned("");
     setAnswerData(valueStr);
@@ -54,7 +54,7 @@ export function Card(props) {
   }, [callback, answerData, restartRecall]);
 
   React.useEffect(() => {
-    if (restartRecall) returnCardDefault("");
+    if (restartRecall) returnToCardDefault("");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [restartRecall]);
 
@@ -65,7 +65,7 @@ export function Card(props) {
           question={question}
           answer={answer}
           turnCard={turnCard}
-          returnCardDefault={returnCardDefault}
+          returnToCardDefault={returnToCardDefault}
         />
       ) : (
         <React.Fragment>

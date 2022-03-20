@@ -1,10 +1,12 @@
 import React from "react";
 import { Card } from "./Card";
 import { cardsData } from "./cardsData";
+import { shuffleArray } from "../../utils/index";
 
 export default function Cards(props) {
   const { newIcon, restartRecall } = props;
   const [newEntry, setNewEntry] = React.useState("");
+  const cards = shuffleArray(cardsData);
 
   function callback(icon) {
     if (!restartRecall) {
@@ -21,10 +23,10 @@ export default function Cards(props) {
 
   return (
     <main>
-      {cardsData.map((card, index) => (
+      {cards.map((card, index) => (
         <Card
           key={index}
-          number={card.number}
+          number={index + 1}
           question={card.question}
           answer={card.answer}
           restartRecall={restartRecall}
