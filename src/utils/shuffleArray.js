@@ -3,11 +3,11 @@ export default function shuffleArray(arr) {
   let index = arr.length,
     randIndex;
 
-  while (index != 0) {
+  while (index !== 0) {
     randIndex = Math.floor(Math.random() * index);
     index--;
 
     [arr[index], arr[randIndex]] = [arr[randIndex], arr[index]];
   }
-  return arr;
+  return arr.splice(0, 8);
 }

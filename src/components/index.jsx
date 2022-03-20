@@ -5,6 +5,7 @@ import Logo from "./../assets/logo.png";
 import { getRandomInt } from "./../utils/index";
 
 export default function Wrapper() {
+  const [selectedDeck, setSelectedDeck] = React.useState("react");
   const [initRecall, setInitRecall] = React.useState(false);
   const [loadScreen, setLoadScreen] = React.useState(false);
   const [scoreGoal, setScoreGoal] = React.useState(1);
@@ -28,7 +29,7 @@ export default function Wrapper() {
   return (
     <React.Fragment>
       {initRecall ? (
-        <FirstScreen scoreGoal={scoreGoal} />
+        <FirstScreen scoreGoal={scoreGoal} selectedDeck={selectedDeck} />
       ) : (
         <div id="nav-screen" className={initRecall ? "hidden" : ""}>
           <figure id="logo">

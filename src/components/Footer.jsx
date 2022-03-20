@@ -1,6 +1,5 @@
 import React from "react";
 import { Icons } from "./Icons";
-import { cardsData } from "./cards/cardsData";
 import PartyEmoji from "./../assets/party.png";
 import SadEmoji from "./../assets/sad.png";
 
@@ -15,7 +14,7 @@ export function Footer(props) {
   } = props;
   const [restartRecall, setRestartRecall] = React.useState(false);
   const [btnClick, setBtnCLick] = React.useState("");
-  const numOfCards = cardsData.length,
+  const numOfCards = 8,
     numOfIcons = icons.length;
   let goalAchieved = perfectScore;
 
@@ -26,7 +25,6 @@ export function Footer(props) {
     ? "Você não esqueceu de nenhum flashcard!"
     : `Ainda faltam alguns... Mas não desanime!`;
   const emoji = goalAchieved ? PartyEmoji : SadEmoji;
-  console.log(goalAchieved);
 
   // EFFECT HOOKS
   React.useEffect(() => {

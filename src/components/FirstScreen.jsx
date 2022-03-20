@@ -4,16 +4,17 @@ import Logo from "./../assets/logo.png";
 import SmallLogo from "./../assets/logo-pequeno.png";
 import { Footer } from "./Footer";
 import { iconsData } from "./iconsData";
-import { cardsData } from "./cards/cardsData";
+import { decksData } from "./cards/decksData";
 import { getRandomInt } from "./../utils/index";
 
 export default function FirstScreen(props) {
-  const { scoreGoal } = props;
+  const { scoreGoal, selectedDeck } = props;
   const [wrong, inBetween, success] = iconsData;
   const [displayIcons, setDisplayIcons] = React.useState([]);
   const [reloadComponent, setReloadComponent] = React.useState(false);
   const [loadScreen, setLoadScreen] = React.useState(false);
   const [countScore, setCountScore] = React.useState(0);
+  const [reactDeck, flagsDeck] = decksData;
 
   const generatedTimeOut = getRandomInt(1000, 4500);
 
@@ -43,7 +44,7 @@ export default function FirstScreen(props) {
   function addIcon(iconStr) {
     let clonedIcon;
 
-    if (displayIcons.length <= cardsData.length) {
+    if (displayIcons.length <= reactDeck.length) {
       if (iconStr === "wrong") {
         clonedIcon = { ...wrong };
         setDisplayIcons([...displayIcons, clonedIcon]);
@@ -78,7 +79,11 @@ export default function FirstScreen(props) {
             <img src={SmallLogo} alt="logo zap recall" />
             <h3>ZapRecall</h3>
           </header>
-          <Cards newIcon={newIcon} restartRecall={reloadComponent}></Cards>
+          <Cards
+            newIcon={newIcon}
+            restartRecall={reloadComponent}
+            selectedDeck={selectedDeck}
+          ></Cards>
           <Footer
             icons={displayIcons}
             perfectScore={countScore >= scoreGoal}

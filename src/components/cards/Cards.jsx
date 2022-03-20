@@ -1,12 +1,19 @@
 import React from "react";
 import { Card } from "./Card";
-import { cardsData } from "./cardsData";
+import { decksData } from "./decksData";
 import { shuffleArray } from "../../utils/index";
 
 export default function Cards(props) {
-  const { newIcon, restartRecall } = props;
+  const { newIcon, restartRecall, selectedDeck } = props;
+  const [reactDeck, flagsDeck] = decksData;
   const [newEntry, setNewEntry] = React.useState("");
-  const cards = shuffleArray(cardsData);
+
+  let cards;
+  if (selectedDeck === "react") {
+    cards = shuffleArray([...reactDeck]);
+  } else if (selectedDeck === "flags") {
+    cards = shuffleArray([...flagsDeck]);
+  }
 
   function callback(icon) {
     if (!restartRecall) {
