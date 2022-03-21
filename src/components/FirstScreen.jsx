@@ -15,7 +15,6 @@ export default function FirstScreen(props) {
   const [loadScreen, setLoadScreen] = React.useState(false);
   const [countScore, setCountScore] = React.useState(0);
   const [numOfTurnedCards, setNumOfTurnedCards] = React.useState(0);
-  const [lastIndex, setLastIndex] = React.useState("");
 
   const generatedTimeOut = getRandomInt(1000, 4500);
 
@@ -37,10 +36,6 @@ export default function FirstScreen(props) {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loadScreen]);
-
-  function returnLastIndex(icon) {
-    setLastIndex(icon);
-  }
 
   function newIcon(icon) {
     let clonedIcon;
@@ -91,7 +86,6 @@ export default function FirstScreen(props) {
             selectedDeck={selectedDeck}
             hasInitiated={hasInitiated}
             numToCompare={numToCompare}
-            returnLastIndex={returnLastIndex}
           ></Cards>
           <Footer
             icons={displayIcons}
@@ -100,7 +94,6 @@ export default function FirstScreen(props) {
             loadScreenAnimation={loadScreenAnimation}
             generatedTimeOut={generatedTimeOut}
             numOfTurnedCards={numOfTurnedCards}
-            lastIndex={lastIndex}
           ></Footer>
         </>
       )}

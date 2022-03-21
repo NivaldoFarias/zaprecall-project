@@ -11,8 +11,6 @@ export function Footer(props) {
     callback,
     loadScreenAnimation,
     generatedTimeOut,
-    numOfTurnedCards,
-    lastIndex,
   } = props;
   const [restartRecall, setRestartRecall] = React.useState(false);
   const [btnClick, setBtnCLick] = React.useState("");
@@ -53,24 +51,6 @@ export function Footer(props) {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [btnClick]);
-
-  React.useEffect(() => {
-    if (numOfTurnedCards > icons.length) {
-      if (lastIndex === "wrong") {
-        icons.push({ class: "wrong-icon md hydrated", name: "close-circle" });
-      } else if (lastIndex === "in-between") {
-        icons.push({
-          class: "in-between-icon md hydrated",
-          name: "help-circle",
-        });
-      } else if (lastIndex === "success") {
-        icons.push({
-          class: "success-icon md hydrated",
-          name: "checkmark-circle",
-        });
-      }
-    }
-  }, [icons, lastIndex, numOfTurnedCards]);
 
   return (
     <footer className={isComplete ? "show-results" : ""}>

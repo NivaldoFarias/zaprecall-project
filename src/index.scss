@@ -258,6 +258,7 @@ body::-webkit-scrollbar {
   @include flex-center(row, space-between, 0);
 
   background-color: white;
+  transition: all 500ms cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 .card {
   position: absolute;
@@ -270,7 +271,7 @@ body::-webkit-scrollbar {
 
   transition: transform 1s;
   transform-style: preserve-3d;
-  transition: height 500ms cubic-bezier(0.215, 0.61, 0.355, 1);
+  transition: all 500ms cubic-bezier(0.215, 0.61, 0.355, 1);
 
   &.turned {
     transform: rotateY(180deg);
