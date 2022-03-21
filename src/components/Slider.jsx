@@ -35,7 +35,9 @@ export default function Slider(props) {
           }}
         />
         <div className="goal">
-          <p>Meta de Zaps</p>
+          <p>
+            Meta de <span>Zaps!</span>
+          </p>
           <Bubble value={value}></Bubble>
         </div>
         <div className="marks-container">

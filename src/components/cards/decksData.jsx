@@ -1,139 +1,140 @@
+import Afghanistan from "./../../assets/flags/flag-of-Afghanistan.png";
+import Chile from "./../../assets/flags/flag-of-Chile.png";
+import Georgia from "./../../assets/flags/flag-of-Georgia.png";
+import Eritrea from "./../../assets/flags/flag-of-Eritrea.png";
+import Kyrgyzstan from "./../../assets/flags/flag-of-Kyrgyzstan.png";
+import Ireland from "./../../assets/flags/flag-of-Ireland.png";
+import Colombia from "./../../assets/flags/flag-of-Colombia.png";
+import Bhutan from "./../../assets/flags/flag-of-Bhutan.png";
+import Belgium from "./../../assets/flags/flag-of-Belgium.png";
+import Austria from "./../../assets/flags/flag-of-Austria.png";
+import Australia from "./../../assets/flags/flag-of-Australia.png";
+import Egypt from "./../../assets/flags/flag-of-Egypt.png";
+import Ecuador from "./../../assets/flags/flag-of-Ecuador.png";
+import France from "./../../assets/flags/flag-of-France.png";
+import Germany from "./../../assets/flags/flag-of-Germany.png";
+import Kenya from "./../../assets/flags/flag-of-Kenya.png";
+import Eswatini from "./../../assets/flags/flag-of-Eswatini.png";
+import Seychelles from "./../../assets/flags/flag-of-Seychelles.png";
+import SaudiArabia from "./../../assets/flags/flag-of-Saudi-Arabia.png";
+import Portugal from "./../../assets/flags/flag-of-Portugal.png";
+
 export const decksData = [
   [
     {
       question: "O que é JSX?",
-      answer: "Uma extensão de linguagem do JavaScript!",
+      answer: "Uma extensão de linguagem do JavaScript",
     },
     {
       question: "O que é o React?",
-      answer: "Uma biblioteca JavaScript para construção de interfaces!",
+      answer: "Uma biblioteca JavaScript para construção de interfaces",
     },
     {
       question: "Como devemos nomear componentes no React?",
-      answer: "Usando PascalCase!",
+      answer: "Usando PascalCase",
     },
     {
       question: "Dentro do JSX, o que podemos utilizar?",
-      answer: "Expressões!",
+      answer: "Expressões",
     },
     {
       question: "O ReactDOM nos ajuda de que forma?",
-      answer: "Interagindo com a DOM para colocar componentes React na mesma!",
+      answer: "Interagindo com a DOM para colocar componentes React na mesma",
     },
     {
       question: "Para quê usamos o npm?",
-      answer: "Gerenciar os pacotes necessários e suas dependências!",
+      answer: "Gerenciar os pacotes necessários e suas dependências",
     },
     {
       question: "Para quê usamos props?",
-      answer: "Para passar diferentes informações para componentes!",
+      answer: "Para passar diferentes informações para componentes",
     },
     {
       question: "Para quê usamos states?",
       answer:
-        "Informar quais informações, ao atualizadas, devem renderizar a tela novamente!",
+        "Informar quais informações, ao atualizadas, devem renderizar a tela novamente",
     },
   ],
   [
     {
-      imageUrl:
-        "https://www.countries-ofthe-world.com/flags-normal/flag-of-Afghanistan.png",
-      answer: "Afeganistão!",
+      imageUrl: { Afghanistan },
+      answer: "Afeganistão",
     },
     {
-      imageUrl:
-        "https://www.countries-ofthe-world.com/flags-normal/flag-of-Chile.png",
-      answer: "Chile!",
+      imageUrl: { Chile },
+      answer: "Chile",
     },
     {
-      imageUrl:
-        "https://www.countries-ofthe-world.com/flags-normal/flag-of-Georgia.png",
-      answer: "Geórgia!",
+      imageUrl: { Georgia },
+      answer: "Geórgia",
     },
     {
-      imageUrl:
-        "https://www.countries-ofthe-world.com/flags-normal/flag-of-Eritrea.png",
-      answer: "Eritrea!",
+      imageUrl: { Eritrea },
+      answer: "Eritrea",
     },
     {
-      imageUrl:
-        "https://www.countries-ofthe-world.com/flags-normal/flag-of-Kyrgyzstan.png",
-      answer: "Quirguistão!",
+      imageUrl: { Kyrgyzstan },
+      answer: "Quirguistão",
     },
     {
-      imageUrl:
-        "https://www.countries-ofthe-world.com/flags-normal/flag-of-Ireland.png",
-      answer: "Irlanda!",
+      imageUrl: { Ireland },
+      answer: "Irlanda",
     },
     {
-      imageUrl:
-        "https://www.countries-ofthe-world.com/flags-normal/flag-of-Colombia.png",
-      answer: "Colombia!",
+      imageUrl: { Colombia },
+      answer: "Colombia",
     },
     {
-      imageUrl:
-        "https://www.countries-ofthe-world.com/flags-normal/flag-of-Bhutan.png",
-      answer: "Butão!",
+      imageUrl: { Bhutan },
+      answer: "Butão",
     },
     {
-      imageUrl:
-        "https://www.countries-ofthe-world.com/flags-normal/flag-of-Belgium.png",
-      answer: "Bélgica!",
+      imageUrl: { Belgium },
+      answer: "Bélgica",
     },
     {
-      imageUrl:
-        "https://www.countries-ofthe-world.com/flags-normal/flag-of-Austria.png",
-      answer: "Áustria!",
+      imageUrl: { Austria },
+      answer: "Áustria",
     },
     {
-      imageUrl:
-        "https://www.countries-ofthe-world.com/flags-normal/flag-of-Australia.png",
-      answer: "Australia!",
+      imageUrl: { Australia },
+      answer: "Australia",
     },
     {
-      imageUrl:
-        "https://www.countries-ofthe-world.com/flags-normal/flag-of-Egypt.png",
-      answer: "Egito!",
+      imageUrl: { Egypt },
+      answer: "Egito",
     },
     {
-      imageUrl:
-        "https://www.countries-ofthe-world.com/flags-normal/flag-of-Ecuador.png",
-      answer: "Equador!",
+      imageUrl: { Ecuador },
+      answer: "Equador",
     },
     {
-      imageUrl:
-        "https://www.countries-ofthe-world.com/flags-normal/flag-of-France.png",
-      answer: "França!",
+      imageUrl: { France },
+      answer: "França",
     },
     {
-      imageUrl:
-        "https://www.countries-ofthe-world.com/flags-normal/flag-of-Germany.png",
-      answer: "Alemanha!",
+      imageUrl: { Germany },
+      answer: "Alemanha",
     },
     {
-      imageUrl:
-        "https://www.countries-ofthe-world.com/flags-normal/flag-of-Kenya.png",
-      answer: "Quênia!",
+      imageUrl: { Kenya },
+      answer: "Quênia",
     },
     {
-      imageUrl:
-        "https://www.countries-ofthe-world.com/flags-normal/flag-of-Eswatini.png",
-      answer: "Essuatíni!",
+      imageUrl: { Eswatini },
+      answer: "Essuatíni",
     },
     {
-      imageUrl:
-        "https://www.countries-ofthe-world.com/flags-normal/flag-of-Seychelles.png",
-      answer: "Seicheles!",
+      imageUrl: { Seychelles },
+      answer: "Seicheles",
     },
     {
-      imageUrl:
-        "https://www.countries-ofthe-world.com/flags-normal/flag-of-Saudi-Arabia.png",
-      answer: "Arábia Saudita!",
+      imageUrl: { SaudiArabia },
+      answer: "Arábia Saudita",
     },
     {
-      imageUrl:
-        "https://www.countries-ofthe-world.com/flags-normal/flag-of-Portugal.png",
-      answer: "Portugal!",
+      imageUrl: { Portugal },
+      answer: "Portugal",
     },
   ],
 ];

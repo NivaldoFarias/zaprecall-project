@@ -1,20 +1,21 @@
 import React from "react";
 import Cards from "./cards/Cards";
 import Logo from "./../assets/logo.png";
-import SmallLogo from "./../assets/logo-pequeno.png";
+import SmallLogo from "./../assets/logo.png";
 import { Footer } from "./Footer";
 import { iconsData } from "./iconsData";
 import { decksData } from "./cards/decksData";
 import { getRandomInt } from "./../utils/index";
 
 export default function FirstScreen(props) {
-  const { scoreGoal, selectedDeck } = props;
+  const { scoreGoal, selectedDeck, hasInitiated } = props;
   const [wrong, inBetween, success] = iconsData;
   const [displayIcons, setDisplayIcons] = React.useState([]);
   const [reloadComponent, setReloadComponent] = React.useState(false);
   const [loadScreen, setLoadScreen] = React.useState(false);
   const [countScore, setCountScore] = React.useState(0);
-  const [reactDeck, flagsDeck] = decksData;
+  const [numOfTurnedCards, setNumOfTurnedCards] = React.useState(0);
+  const [lastIndex, setLastIndex] = React.useState("");
 
   const generatedTimeOut = getRandomInt(1000, 4500);
 
@@ -37,26 +38,30 @@ export default function FirstScreen(props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loadScreen]);
 
-  function newIcon(icon) {
-    addIcon(icon);
+  function returnLastIndex(icon) {
+    setLastIndex(icon);
   }
 
-  function addIcon(iconStr) {
+  function newIcon(icon) {
     let clonedIcon;
 
-    if (displayIcons.length <= reactDeck.length) {
-      if (iconStr === "wrong") {
+    if (displayIcons.length <= decksData[0].length) {
+      if (icon === "wrong") {
         clonedIcon = { ...wrong };
         setDisplayIcons([...displayIcons, clonedIcon]);
-      } else if (iconStr === "in-between") {
+      } else if (icon === "in-between") {
         clonedIcon = { ...inBetween };
         setDisplayIcons([...displayIcons, clonedIcon]);
-      } else if (iconStr === "success") {
+      } else if (icon === "success") {
         clonedIcon = { ...success };
         setCountScore(countScore + 1);
         setDisplayIcons([...displayIcons, clonedIcon]);
       }
     }
+  }
+
+  function numToCompare(num) {
+    setNumOfTurnedCards(num);
   }
 
   function loadScreenAnimation() {
@@ -70,9 +75,10 @@ export default function FirstScreen(props) {
   return (
     <div id="first-screen">
       {loadScreen ? (
-        <>
-          <img id="loading-img" src={Logo} alt="" />
-        </>
+        <div className="loading-screen">
+          <img id="loading-img" src={Logo} alt="Logo ZapRecall" />
+          <h3>Carregando...</h3>
+        </div>
       ) : (
         <>
           <header>
@@ -83,6 +89,9 @@ export default function FirstScreen(props) {
             newIcon={newIcon}
             restartRecall={reloadComponent}
             selectedDeck={selectedDeck}
+            hasInitiated={hasInitiated}
+            numToCompare={numToCompare}
+            returnLastIndex={returnLastIndex}
           ></Cards>
           <Footer
             icons={displayIcons}
@@ -90,6 +99,8 @@ export default function FirstScreen(props) {
             callback={restartPage}
             loadScreenAnimation={loadScreenAnimation}
             generatedTimeOut={generatedTimeOut}
+            numOfTurnedCards={numOfTurnedCards}
+            lastIndex={lastIndex}
           ></Footer>
         </>
       )}

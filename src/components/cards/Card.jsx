@@ -3,7 +3,15 @@ import CardContent from "./CardContent";
 import { iconsData } from "./../iconsData";
 
 export function Card(props) {
-  const { number, question, answer, callback, restartRecall } = props;
+  const {
+    number,
+    question,
+    imageUrl,
+    answer,
+    callback,
+    restartRecall,
+    addTurnedCard,
+  } = props;
   const [showCard, setShowCard] = React.useState(false);
   const [cardTurned, setCardTurned] = React.useState("");
   const [answerData, setAnswerData] = React.useState("");
@@ -38,6 +46,7 @@ export function Card(props) {
   function turnCard(bool) {
     if (bool) {
       setCardTurned("turned");
+      addTurnedCard();
     } else {
       setCardTurned("");
     }
@@ -50,8 +59,9 @@ export function Card(props) {
   }
 
   React.useEffect(() => {
-    callback(answerData);
-  }, [callback, answerData, restartRecall]);
+    callback(answerData, number === 8);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [callback, cardTurned, restartRecall]);
 
   React.useEffect(() => {
     if (restartRecall) returnToCardDefault("");
@@ -63,13 +73,16 @@ export function Card(props) {
       {showCard ? (
         <CardContent
           question={question}
+          imageUrl={imageUrl}
           answer={answer}
           turnCard={turnCard}
           returnToCardDefault={returnToCardDefault}
         />
       ) : (
         <React.Fragment>
-          <p className={textColor}>Pergunta {number}</p>
+          <p className={textColor}>
+            {question ? "Pergunta" : "Bandeira"} {number}
+          </p>
           {loadedIcon}
         </React.Fragment>
       )}

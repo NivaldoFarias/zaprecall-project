@@ -25,45 +25,24 @@ body::-webkit-scrollbar {
   height: 100vh;
   width: 100vw;
 
-  padding: 150px 30px;
+  padding: 80px 30px 0;
 
   figure {
-    @include flex-center(column, space-between, 0);
+    @include flex-center(column, initial, 25px);
 
-    margin-bottom: 150px;
+    margin-bottom: 120px;
     height: 170px;
     width: 300px;
 
     text-align: center;
   }
   figure img {
-    width: 85px;
+    height: 151px;
   }
   figure figcaption {
     font-family: $font-righteous;
     font-size: 40px;
     color: white;
-  }
-  button {
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    height: 55px;
-    width: 220px;
-
-    font-family: $font-recursive;
-    font-size: $regular-font-size;
-    color: rgba(215, 9, 0, 1);
-    opacity: 0.6;
-
-    transition: opacity 400ms;
-
-    border: $btn-border-style;
-    box-shadow: $default-box-shadow;
-    border-radius: $default-border-radius;
-    background-color: white;
   }
   p {
     margin: 0 auto;
@@ -74,6 +53,41 @@ body::-webkit-scrollbar {
     font-family: $font-recursive;
     text-align: center;
     color: white;
+  }
+  #begin-btn {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 55px;
+    width: 220px;
+
+    font-family: $font-recursive;
+    font-size: $regular-font-size;
+    color: $btn-red;
+
+    transition: all 300ms ease-in-out 0s;
+
+    border: $btn-border-style;
+    box-shadow: $default-box-shadow;
+    border-radius: $default-border-radius;
+    background-color: white;
+    &:disabled {
+      cursor: not-allowed;
+    }
+  }
+  .deck-selection {
+    @include flex-center(row, space-evenly, 15px);
+    align-items: center;
+    flex-wrap: wrap;
+
+    height: fit-content;
+    width: 100%;
+
+    p {
+      width: 100%;
+    }
   }
 }
 #first-screen {
@@ -92,12 +106,12 @@ body::-webkit-scrollbar {
     margin-left: auto;
     margin-right: auto;
     text-align: center;
-    padding: 19px 80px;
+    padding: 19px 70px;
     height: 120px;
     width: 375px;
   }
   header img {
-    width: 50px;
+    width: 60px;
   }
   header h3 {
     font-size: 32px;
@@ -222,6 +236,24 @@ body::-webkit-scrollbar {
   width: 150px;
   animation: img-pulse 1.2s infinite ease-in-out;
 }
+*.opaque {
+  opacity: 0.4;
+}
+.loading-screen h3 {
+  position: absolute;
+  top: calc(50vh + 100px);
+  left: 0;
+  right: 0;
+
+  font-family: $font-righteous;
+  font-size: 40px;
+  color: white;
+
+  animation: loading-pulse 1.2s infinite ease-in-out;
+
+  margin: 0 auto;
+  text-align: center;
+}
 .display {
   @include flex-center(row, space-between, 0);
 
@@ -270,12 +302,24 @@ body::-webkit-scrollbar {
     height: fit-content;
     width: 100%;
   }
-  .question img {
+  .question .rotate-card-icon {
     position: absolute;
     bottom: 5px;
     right: 10px;
 
     width: 40px;
+  }
+  .question .flag {
+    position: absolute;
+    top: 12px;
+    left: 20px;
+
+    background-color: $btn-red;
+    background-size: cover;
+    border: 3px solid $default-red;
+    border-radius: $default-border-radius;
+
+    width: 60%;
   }
   .answer {
     @include flex-center(row, space-evenly, 5px);
@@ -413,23 +457,74 @@ body::-webkit-scrollbar {
       background: #ccc;
     }
   }
+  span {
+    font-weight: 500;
+  }
+}
+.deck-btn {
+  position: relative;
+  left: 0px;
+  top: 0px;
+
+  padding: 15px;
+  width: 150px;
+
+  font-size: 0.9em;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-family: $font-recursive;
+  color: $btn-red;
+
+  transition: all 300ms ease-in-out 0s;
+
+  border: 1px solid $btn-red;
+  border-radius: $default-border-radius;
+  box-shadow: $btn-red 4px 4px 0px 0px;
+  background-color: rgb(255, 255, 255);
+}
+.deck-btn.clicked {
+  left: 4px;
+  top: 4px;
+
+  box-shadow: rgb(255, 255, 255) 0px 0px 0px 0px;
 }
 @keyframes img-pulse {
   0% {
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
+    filter: brightness(110%);
   }
   50% {
     -webkit-transform: scale(0.8);
     transform: scale(0.8);
+    filter: brightness(90%);
   }
   100% {
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
+    filter: brightness(110%);
+  }
+}
+@keyframes loading-pulse {
+  0% {
+    transform: scale(1.05);
+    filter: brightness(140%);
+    filter: blur(0.05rem);
+  }
+  50% {
+    transform: scale(0.95);
+    filter: brightness(90%);
+    filter: blur(0.15rem);
+  }
+  100% {
+    transform: scale(1.05);
+    filter: brightness(140%);
+    filter: blur(0.05rem);
   }
 }
 button:hover,
 ion-icon:hover,
-.question img:hover {
+.rotate-card-icon:hover {
   cursor: pointer;
 }
