@@ -16,6 +16,7 @@ export function Footer(props) {
   } = props;
   const [restartRecall, setRestartRecall] = React.useState(false);
   const [btnClick, setBtnCLick] = React.useState("");
+  // eslint-disable-next-line no-unused-vars
   const [canContinue, setCanContinue] = React.useState(true);
   const numOfCards = 8,
     numOfIcons = icons.length;
