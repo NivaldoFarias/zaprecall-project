@@ -78,7 +78,7 @@ body::-webkit-scrollbar {
     }
   }
   .deck-selection {
-    @include flex-center(row, space-evenly, 15px);
+    @include flex-center(row, center, 15px);
     align-items: center;
     flex-wrap: wrap;
 
