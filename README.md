@@ -16,6 +16,8 @@
     <a href="https://github.com/NivaldoFarias/projeto8-zaprecall/blob/main/src/index.scss"><strong>SCSS code»</strong></a>
 </div>
 
+![Banner](https://github.com/NivaldoFarias/projeto8-zaprecall/blob/main/src/assets/zaprecall-showroom.png?raw=true)
+
 <!-- ABOUT THE PROJECT -->
 
 ### Built With
